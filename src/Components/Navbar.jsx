@@ -3,14 +3,13 @@ import { FaShoppingCart } from "react-icons/fa";
 import { useSelector } from 'react-redux';
 import Modal from './Modal';
 import { Link, Outlet } from 'react-router-dom';
-
 function Navbar() {
     const [open, setOpen] = useState(false)
     const count = useSelector((state) => state.cart.cart.length);
     const cart = useSelector((state) => state.cart.cart);
     return (
-        <div className='min-h-screen flex flex-col' >
-            <div className='bg-customBlue h-auto p-3 text-white flex justify-evenly relative '>
+        <div className='min-h-screen h-auto flex flex-col ' >
+            <div className='bg-customBlue h-auto p-3 text-white flex justify-evenly relative'>
                 <span>
                     <Link to={'/'}  >
                         <h1
@@ -25,7 +24,7 @@ function Navbar() {
                 ' />
                     <FaShoppingCart
                         onClick={() => setOpen(true)}
-                        className='h-6 w-10'
+                        className='h-6 w-10 '
                     />
                     <h1
                         className='bg-stone-900 p-1 text-xs-low rounded-full relative right-9 bottom-3'>{count}</h1>
@@ -39,15 +38,17 @@ function Navbar() {
                     z-10
                     '
                     >
-                        <Modal cart={cart} setOpen={setOpen} />
+                        <Modal cart={cart} setOpen={setOpen}  />
                     </div>
                     :
                     null
                 }
             </div>
-            <div className="flex-1">
+            <div className="flex-1 flex justify-center  items-center">
                 <Outlet />
             </div>
+                
+            
 
         </div>
 
