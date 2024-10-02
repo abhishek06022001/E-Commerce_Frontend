@@ -3,20 +3,24 @@ import axios from 'axios';
 import ProductItem from './Components/ProductItem';
 import { useSelector, useDispatch } from 'react-redux';
 function MainPage() {
-    const [products, setProducts] = useState();
-    const [loading, setLoading] = useState(true);
-    useEffect(() => {
-        async function getProducts() {
-            let products = await axios.get('https://fakestoreapi.com/products')
-                .then()
-                .catch(error => console.log(error.message));
-            setTimeout(() => {
-                setProducts(products.data);
-                setLoading(false);
-            }, 1000);
-        }
-        getProducts();
-    }, []);
+    // const [products, setProducts] = useState();
+    // const [loading, setLoading] = useState(true);
+    // useEffect(() => {
+    //     async function getProducts() {
+    //         let products = await axios.get('https://fakestoreapi.com/products')
+    //             .then()
+    //             .catch(error => console.log(error.message));
+    //         setTimeout(() => {
+    //             setProducts(products.data);
+    //             setLoading(false);
+    //         }, 1000);
+    //     }
+    //     getProducts();
+    // }, []);
+    
+    const products = useSelector((state) => state.product.filteredProducts);
+
+    const loading = useSelector((state) => state.product.loading);
     return (
         <div className='h-full flex flex-col'>
             {loading ? <>
